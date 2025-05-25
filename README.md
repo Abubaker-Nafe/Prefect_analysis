@@ -74,8 +74,8 @@ Real-time analytics pipeline that streams **MongoDB** receipt inserts into **MyS
 ## 📊 Analytics Tables
 | Table | Primary Key(s)	 | What’s Inside |
 |-------|------------------|---------------|
-| **receipts_summary	** | 	as_of DATE | Daily KPIs: avg spend/receipt, items/receipt, this-week vs last-week sales. |
-| **store_monthly	** | 		(month, store_id) | Monthly sales per store (YYYY-MM). |
+| **receipts_summary** | 	as_of DATE | Daily KPIs: avg spend/receipt, items/receipt, this-week vs last-week sales. |
+| **store_monthly** | 		(month, store_id) | Monthly sales per store (YYYY-MM). |
 | **item_performance** | item_name	 |Lifetime units sold per menu item. |
 | **store_peak_hours** | **store_id** | Peak hour (0-23) and transaction count. |            
 
