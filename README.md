@@ -31,15 +31,9 @@ Real-time analytics pipeline that streams **MongoDB** receipt inserts into **MyS
   - `/item_performance` – Total units sold per product.
   - `/store_peak_hours` – Hour of day with highest tx count per store.
 
-| 🛠️ Configuration |
+## 🛠️ Configuration
 | Variable | Default | code	Purpose |
 |----------|---------|--------------|
 | **SQL_DSN** | mysql+pymysql://root:…@localhost:3306/analysis | Sync engine for upserts. |
 | **ASYNC_SQL_DSN** | 	mysql+aiomysql://root:…@localhost:3306/analysis | analysis	Async engine for API. |
 | **MONGO_URI** | mongodb+srv://nafe:…@coffeeshop.mongodb.net | Source cluster. |
-
-🛠️ Configuration
-Variable	Default in code	Purpose
-SQL_DSN	mysql+pymysql://root:…@localhost:3306/analysis	Sync engine for upserts
-ASYNC_SQL_DSN	mysql+aiomysql://root:…@localhost:3306/analysis	Async engine for API
-MONGO_URI	mongodb+srv://nafe:…@coffeeshop.mongodb.net	Source cluster
