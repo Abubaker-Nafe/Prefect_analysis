@@ -15,14 +15,14 @@ if value does not exist --> insert
 '''
 
 # DSN for mysql server
-SQL_DSN = "mysql+pymysql://root:password@localhost:3306/analysis" # Enter your password
+SQL_DSN = "mysql+pymysql://root:password@localhost:3306/analysis" # Enter your password 0N
 
 # Prepare SQL metadata
 engine   = create_engine(SQL_DSN) # to execute my upserts
 metadata = MetaData() # to collect my table definitions
 
 # Mongodb setup
-MONGO_URI = "mongodb+srv://nafe:password@coffeeshop.s8duwhp.mongodb.net" # Enter your password
+MONGO_URI = "mongodb+srv://nafe:password@coffeeshop.s8duwhp.mongodb.net" # Enter your password 0
 client     = MongoClient(MONGO_URI)
 db         = client["coffeeshop"]
 collection = db["receipt"] # since we are only dealing with receipts collection
