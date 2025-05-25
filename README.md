@@ -16,19 +16,20 @@ Real-time analytics pipeline that streams **MongoDB** receipt inserts into **MyS
 | **Analytics** | SQLAlchemy Core | Computes KPIs (spend per receipt, item performance, etc.) and writes them idempotently. |
 | **API** | FastAPI + SQLAlchemy Async | Zero-copy selects from MySQL and JSON-serialises with Pydantic models. |
 
-                   ┌────────────┐      insert       ┌─────────────┐
-                   │  MongoDB   │ ───────────────▶ │ Prefect Flow│
-                   └────────────┘                  │ (Python)    │
-                          ▲                        └─────┬───────┘
-                          │ watch()                        │ upserts
-                          │                                ▼
-                   ┌────────────┐                  ┌─────────────┐
-                   │ FastAPI    │  ←―――― queries ― │   MySQL     │
-                   │ (uvicorn)  │                  │ analytics DB│
-                   └────────────┘                  └─────────────┘
 
----
+- **ETL Flow** (Prefect)
+  - Loads all receipts from MongoDB.
+  - Computes overall metrics (average spend/items per receipt, week-over-week sales).
+  - Computes per‐store monthly sales.
+  - Computes item‐level performance (total quantity sold).
+  - Identifies each store’s peak transaction hour.
+  - Upserts results into MySQL tables via “INSERT … ON DUPLICATE KEY UPDATE”.
 
+- **REST API** (FastAPI)
+  - `/receipts_summary` – All-time snapshots of overall metrics.
+  - `/store_monthly` – Monthly sales per store.
+  - `/item_performance` – Total units sold per product.
+  - `/store_peak_hours` – Hour of day with highest tx count per store.
 
 
 
