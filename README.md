@@ -16,3 +16,19 @@ Real-time analytics pipeline that streams **MongoDB** receipt inserts into **MyS
 | **Analytics** | SQLAlchemy Core | Computes KPIs (spend per receipt, item performance, etc.) and writes them idempotently. |
 | **API** | FastAPI + SQLAlchemy Async | Zero-copy selects from MySQL and JSON-serialises with Pydantic models. |
 
+                   ┌────────────┐      insert       ┌─────────────┐
+                   │  MongoDB   │ ───────────────▶ │ Prefect Flow│
+                   └────────────┘                  │ (Python)    │
+                          ▲                        └─────┬───────┘
+                          │ watch()                        │ upserts
+                          │                                ▼
+                   ┌────────────┐                  ┌─────────────┐
+                   │ FastAPI    │  ←―――― queries ― │   MySQL     │
+                   │ (uvicorn)  │                  │ analytics DB│
+                   └────────────┘                  └─────────────┘
+
+---
+
+
+
+
