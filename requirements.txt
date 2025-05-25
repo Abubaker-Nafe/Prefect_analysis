@@ -1,0 +1,20 @@
+# ─── Core ETL & orchestration ───────────────────────────────────────────────────
+prefect==2.19.4          # Prefect 2.x flow engine
+
+# ─── Databases ──────────────────────────────────────────────────────────────────
+pymongo==4.7.2           # MongoDB driver
+sqlalchemy==2.0.29       # SQL / ORM core (sync + async)
+pymysql==1.1.1           # MySQL sync driver for SQLAlchemy
+aiomysql==0.2.0          # MySQL async driver for SQLAlchemy
+
+# ─── API layer ──────────────────────────────────────────────────────────────────
+fastapi==0.111.0         # Web framework
+pydantic==2.6.4          # Data-validation (FastAPI dependency)
+uvicorn[standard]==0.29.0  # ASGI server with reload, logging, etc.
+
+# ─── Utilities ──────────────────────────────────────────────────────────────────
+python-dotenv==1.0.1     # Load .env files (optional but recommended)
+
+# ─── Dev / testing extras (uncomment if you use them) ───────────────────────────
+# pytest==8.2.0
+# schemathesis==3.25.0
